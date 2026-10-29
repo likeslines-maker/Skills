@@ -16,8 +16,8 @@ A collection of skills for AI agents. Each skill is a self-contained folder with
   - `SKILL.md` — entry point for the agent (YAML frontmatter + body)
   - `README.md` — human-readable description of the skill
   - `references/` — long-form docs, loaded on demand
-    - `three-dimensional-logic.ru.md`
-    - `three-dimensional-logic.en.md`
+  - skill_3_logic_RU.md — Russian instructions
+  - skill_3_logic_EN.md — English instructions
 
 ## Installation
 
