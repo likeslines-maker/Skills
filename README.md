@@ -93,5 +93,3 @@ Make sure your agent system supports Markdown instruction files and connect the 
 ---
 
 **Three-Dimensional Logic** is a way to structure reasoning through three logical values, three local contexts, and an analysis of the relationships between them.
-path.write_text(content, encoding="utf-8")
-print(f"Created: {path} ({path.stat().st_size} bytes)")
