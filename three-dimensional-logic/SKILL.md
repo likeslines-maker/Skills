@@ -1,42 +1,92 @@
 ---
 name: three-dimensional-logic
-description: Applies three-valued logic (T, F, N) through three local contexts (TF, TN, FN) to preserve context, distinguish global values from local roles, and compare aspects of ambiguous tasks. Use when a situation admits multiple interpretations, when sources disagree, when planning under uncertainty, or when coordinating reports from several agents.
+description: Applies the T/F/N model through three local contexts (TF, TN, FN), preserving context and distinguishing global values from local roles. Use when a problem has multiple relational aspects, competing interpretations, or reports that must be compared without inventing an aggregation rule.
 ---
 
 # Three-Dimensional Logic
 
-## When to use
-Ambiguous analysis, conflicting sources, planning under incomplete information, merging agent reports, diagnosing multi-mode systems. Do not apply mechanically to every task.
+Use this skill to keep the context of a claim explicit, analyze relevant aspects separately, and avoid collapsing different relations into one verdict.
 
 ## Model
-Global values: `T` (truth), `F` (falsehood), `N` (neutral — neither, in this model).
-A value's global identity is distinct from its local role.
 
-| Context | Values | Order | Local truth | Local falsehood |
-|---|---|---|---|---|
-| `TF` | T, F | F < T | T | F |
-| `TN` | T, N | N < T | T | N |
-| `FN` | F, N | F < N | N | F |
+Global values:
+- `T` — true
+- `F` — false
+- `N` — neutral; neither true nor false in this model
 
-Local operations in context `C`: `¬C` swaps the two values; `∧C` = min, `∨C` = max by local order; `a →C b = (¬C a) ∨C b`. Operations are closed within their context.
+Local contexts and their orders:
+- `TF`: `F < T`
+- `TN`: `N < T`
+- `FN`: `F < N`
+
+For a context `C`, its local top is the greatest value in that context and its local bottom is the least:
+- `TF`: top `T`, bottom `F`
+- `TN`: top `T`, bottom `N`
+- `FN`: top `N`, bottom `F`
+
+A value's global identity does not change when its local role changes. In particular, `N` remains `N`; it is the local bottom in `TN` and the local top in `FN`.
+
+## Local operations
+
+Within a selected context `C`:
+- `¬C` swaps the two values of that context.
+- `a ∧C b = minC(a, b)`.
+- `a ∨C b = maxC(a, b)`.
+- `a →C b = (¬C a) ∨C b`.
+
+Operations are defined locally and remain within the selected context. Do not apply a result from one context as if it were automatically a result in another.
+
+Example in `FN`, where `F < N`:
+- `¬FN(F) = N`
+- `N ∧FN F = F`
+- `N ∨FN F = N`
+- `N →FN F = (¬FN N) ∨FN F = F ∨FN F = F`
+
+The example illustrates local operations only; it does not define a global negation or a rule for moving between contexts.
 
 ## Workflow
-1. State the exact claim/relation/decision under analysis.
-2. Separate confirmed facts, contradictions, missing data, and context-dependent premises.
-3. Choose context (`TF`/`TN`/`FN`) by the relation being examined; state why.
-4. Assign local roles from the table.
-5. Compute only with operations of the chosen context; keep results inside it.
-6. Compare aspects: what changes, what holds, what depends on the facet.
-7. Return to the practical task; if the approach added nothing, say so.
 
-## Rules
-- Do not transfer operations between contexts without an explicit transition rule.
-- Do not equate `N` automatically with "unknown", "incomplete", or "both".
-- Do not merge the three facets by majority vote — the model has no such rule.
-- Distinguish formal rules, task interpretation, assumptions, and analogies.
+1. **State the exact claim or question.** Make its subject, scope, time, and criteria explicit.
+2. **Identify the relevant relation(s).** Choose `TF`, `TN`, and/or `FN` only when the relationship being examined justifies that context.
+3. **Keep facets separate.** Record what each source, agent, or interpretation actually supports.
+4. **Operate locally.** Apply negation, conjunction, disjunction, or implication only within a selected context.
+5. **Mark evidence and gaps.** Distinguish evidence, contradiction, and missing information. Do not automatically encode missing information as `N`.
+6. **Compare results without forced aggregation.** Do not vote, average, or collapse contexts unless a separate aggregation rule has been explicitly defined.
+7. **Return to the whole task.** Summarize what is established, what remains unresolved, and what evidence or action would help.
 
+## Example: conflicting agent reports
+
+Two agents report different things about whether a task is complete.
+
+1. Specify the exact completion claim, time, and acceptance criteria.
+2. Inspect the evidence each agent used (for example, logs, tests, or a completion marker).
+3. Separate distinct questions: whether a completion event occurred, whether the acceptance criteria were met, and whether the available evidence is sufficient.
+4. Select a context for each relation only when justified; do not assign `N` merely because one report lacks evidence.
+5. Do not decide by majority vote. Report the supported facts, the disagreement, and the next check needed to resolve it.
+
+## Guardrails
+
+- `N` is not automatically “unknown,” “incomplete,” “not applicable,” “doubtful,” or “both true and false.” Use those descriptions only when independently justified.
+- Do not invent a transition function between contexts.
+- Do not infer a global negation from the local negations.
+- A local top/bottom role is not a new global value.
+- Do not treat a geometric analogy as a proof of the logical model.
+- If a task does not benefit from multiple relational perspectives, use a simpler method.
+
+## Output format
+
+When useful, report:
+- **Claim / question**
+- **Context(s) and why**
+- **Evidence by facet**
+- **Local operation(s), if any**
+- **What is established**
+- **What remains unresolved**
+- **Next evidence or action**
+
+Core principle: **Preserve relations and context first; perform local operations second; compare facets only afterward, then return to the whole task.**
 
 ## References
 
-- Full authorial edition (RU): `references/skill_3_logic_RU.md`
-- Full authorial edition (EN): `references/skill_3_logic_EN.md`
+- Full Russian authorial edition: `references/skill_3_logic_RU.md`
+- Full English authorial edition: `references/skill_3_logic_EN.md`
