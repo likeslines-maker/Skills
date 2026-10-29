@@ -8,9 +8,9 @@ This repository contains a skill intended for practical use by AI agents in info
 
 The skill is available in two language versions:
 
-- **[`skill_3_logic_RU.md`](skill_3_logic_RU.md)** — Russian version.
-- **[`skill_3_logic_EN.md`](skill_3_logic_EN.md)** — English version.
-
+- [**`skill_3_logic_RU.md`**](references/skill_3_logic_RU.md) — русская версия.
+- [**`skill_3_logic_EN.md`**](references/skill_3_logic_EN.md) — английская версия.
+  
 Both files describe the same approach in different languages and are intended for AI-agent systems that support custom instructions or Markdown-based skills.
 
 ## What is this skill for?
