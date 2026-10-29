@@ -174,3 +174,9 @@ The skill is useful when it helps an agent:
 - notice that a conclusion changes with context;
 - retain differing descriptions without prematurely collapsing them;
 - explain more precisely what is known, what is not established, and what depends on conditions.
+
+If these benefits do not occur, do not artificially complicate the task.
+
+## Core principle
+
+**First preserve relations and context; then apply local operations; next compare the faces; finally return to the whole task.** Do not replace the reference version with another logic, and do not invent missing transition or aggregation rules.
