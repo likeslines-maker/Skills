@@ -180,3 +180,82 @@ If these benefits do not occur, do not artificially complicate the task.
 ## Core principle
 
 **First preserve relations and context; then apply local operations; next compare the faces; finally return to the whole task.** Do not replace the reference version with another logic, and do not invent missing transition or aggregation rules.
+
+# Three-Dimensional Logic — Supplement to the Authorial Edition
+
+This file adds practical examples and usage safeguards to the author's model. It does not introduce new global operations, values, or context-transition rules.
+
+## 1. Value versus local role
+
+A global value and its local role are different things.
+
+- `T`, `F`, and `N` are the model's global values.
+- A context defines a local order and therefore determines which of its two values is the local top and which is the local bottom.
+- `N` does not turn into `T` or `F`. Only its role within the selected context changes.
+
+| Context | Local order | Local top | Local bottom |
+|---|---|---|---|
+| `TF` | `F < T` | `T` | `F` |
+| `TN` | `N < T` | `T` | `N` |
+| `FN` | `F < N` | `N` | `F` |
+
+Thus, in `FN`, `¬FN(F) = N`, not `T`: the operation stays within `FN`, where `T` is not a member.
+
+## 2. Local-operation example in FN
+
+Because `FN` is ordered as `F < N`, conjunction is the minimum, disjunction the maximum in that order, and negation swaps the two values.
+
+- `¬FN(F) = N`
+- `¬FN(N) = F`
+- `N ∧FN F = minFN(N, F) = F`
+- `N ∨FN F = maxFN(N, F) = N`
+- `N →FN F = (¬FN N) ∨FN F = F ∨FN F = F`
+
+These are local operations only. They do not define a global negation or a rule for transferring a result into another context.
+
+## 3. Choosing contexts when a task has multiple relations
+
+When a task contains several distinct relations, analyze them separately. For each context, state which relation is being examined and why that context is appropriate.
+
+Do not mechanically apply all three contexts to every task. Choose a context based on the structure of the relation, not to fill a table. If there is no basis for choosing a context, state that limitation explicitly.
+
+If several contexts produce results, do not combine them through voting, averaging, or an arbitrary priority. This model does not define such an aggregation rule. First present each facet separately; then describe the combined picture and identify what remains unresolved.
+
+## 4. Practical example: agents disagree about a report
+
+Suppose one agent says, “The task is complete,” while another says, “The task is not complete.”
+
+1. **Clarify the claim.** What does “complete” mean? At what time? Which acceptance criteria apply?
+2. **Separate the relations.** Did a completion event occur? Were the acceptance criteria met? Is the available evidence sufficient?
+3. **Inspect the basis of each report.** Compare logs, test results, system state, and timestamps. Do not treat a report as proof merely because it came from a different agent.
+4. **Choose a context for each relation separately.** Do not automatically assign `N` to missing data: lack of evidence alone does not determine a logical value in this model.
+5. **Do not vote between agents.** Record confirmed facts, the exact disagreement, and the check that could resolve it.
+
+A result might look like this:
+- confirmed: tests passed on the specified version;
+- conflicting evidence: one agent used an older log, the other a current log;
+- unresolved: whether the final step ran after the tests;
+- next step: verify the current timestamp and final-step status.
+
+This is an example of organizing an investigation, not a universal mapping from facts to `T`, `F`, and `N`.
+
+## 5. Context changes: a caution
+
+The same symbol in different contexts does not imply the same local role. Conversely, similar local roles do not make values identical.
+
+When moving to another context, state again:
+- the global value;
+- the local order of the selected context;
+- the value's local role in that order;
+- the operation being performed in the new context.
+
+Do not transfer the result of a local operation between contexts without a separately specified transition rule. No universal rule of this kind is defined in this model.
+
+## 6. What must not be assumed automatically
+
+- `N` does not automatically mean “unknown,” “insufficient data,” “not applicable,” “doubtful,” or “both true and false.”
+- Local negation does not define global negation.
+- Results from different contexts are not automatically aggregated.
+- A geometric analogy may aid intuition, but it does not prove formal properties of the model.
+
+**Criterion for useful application:** the model is useful when it preserves distinctions between relations and makes the basis of a conclusion more transparent. If the contexts add no useful distinctions, use a simpler method.
