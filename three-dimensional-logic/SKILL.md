@@ -35,6 +35,8 @@ Local operations in context `C`: `¬C` swaps the two values; `∧C` = min, `∨C
 - Do not merge the three facets by majority vote — the model has no such rule.
 - Distinguish formal rules, task interpretation, assumptions, and analogies.
 
+
 ## References
-- Full authorial edition (RU): `references/three-dimensional-logic.ru.md`
-- Full authorial edition (EN): `references/three-dimensional-logic.en.md`
+
+- Full authorial edition (RU): `references/skill_3_logic_RU.md`
+- Full authorial edition (EN): `references/skill_3_logic_EN.md`
